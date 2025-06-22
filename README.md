@@ -6,7 +6,7 @@
 - [Vercel](https://agrinho-2025-pi-jade.vercel.app/)
 - [p5.js Editor - Tela Cheia](https://editor.p5js.org/aysla.ferreira/full/aE6VivKXW)
 
-> É recomendado que o projeto seja acessado através do deploy para evitar sobreposições de elementos. Caso o projeto seja aberto pelo p5.js, recomenda-se que abra em tela cheia.
+> É recomendado que o projeto seja acessado através do deploy para evitar sobreposições de elementos.
 
 ---
 
