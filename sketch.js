@@ -88,6 +88,11 @@ function mousePressed() {
     usuarioClicou() // FUNÇÃO RESPONSÁVEL PELA INTERAÇÃO DO CLICK
 }
 
+// Função touchStarted para lidar com toques em dispositivos móveis.
+function touchStarted() {
+    usuarioClicou()
+    return false;
+}
 
 // --- FUNÇÕES AUXILIARES DE LÓGICA PARA O DRAW --- //
 
@@ -355,23 +360,23 @@ function gerenciarMusicaDeFundo() {
     // VERIFICA EM QUAL TIPO DE TELA O JOGO ESTÁ PARA TOCAR A MÚSICA CERTA.
     const isIntroOrInstrucoes = telaAtual === "intro" || telaAtual === "instrucoes"
     const isFinalizacao = telaAtual === "finalizacao"
-    const isVideo = telaAtual === "video" // VARIÁVEL PARA A TELA DE VÍDEO.
+    const isVideo = telaAtual === "video"
 
     if (isIntroOrInstrucoes) {
-        if (musicaIntroInstrucoes) { // VERIFICA SE A MÚSICA FOI CARREGADA.
-            if (!musicaIntroInstrucoes.isPlaying()) musicaIntroInstrucoes.play() // TOCA A MÚSICA DA INTRODUÇÃO/INSTRUÇÕES SE NÃO ESTIVER TOCANDO.
+        if (musicaIntroInstrucoes) {
+            if (!musicaIntroInstrucoes.isPlaying()) musicaIntroInstrucoes.play()
         }
-        if (musicaFinalizacao && musicaFinalizacao.isPlaying()) musicaFinalizacao.pause() // PAUSA A MÚSICA DE FINALIZAÇÃO SE ESTIVER TOCANDO.
+        if (musicaFinalizacao && musicaFinalizacao.isPlaying()) musicaFinalizacao.pause()
     } else if (isFinalizacao) {
-        if (musicaFinalizacao) { // VERIFICA SE A MÚSICA FOI CARREGADA.
-            if (!musicaFinalizacao.isPlaying()) musicaFinalizacao.play() // TOCA A MÚSICA DE FINALIZAÇÃO.
+        if (musicaFinalizacao) {
+            if (!musicaFinalizacao.isPlaying()) musicaFinalizacao.play()
         }
-        if (musicaIntroInstrucoes && musicaIntroInstrucoes.isPlaying()) musicaIntroInstrucoes.pause() // PAUSA A MÚSICA DE INTRODUÇÃO.
+        if (musicaIntroInstrucoes && musicaIntroInstrucoes.isPlaying()) musicaIntroInstrucoes.pause()
     } else if (isVideo) {
-        // NA TELA DE VÍDEO, NÃO QUEREMOS QUE NENHUMA DAS MÚSICAS DE FUNDO TOQUE.
+
         if (musicaIntroInstrucoes && musicaIntroInstrucoes.isPlaying()) musicaIntroInstrucoes.pause()
         if (musicaFinalizacao && musicaFinalizacao.isPlaying()) musicaFinalizacao.pause()
-    } else { // PARA AS MÚSICAS QUANDO EM OUTRAS TELAS (COMO A TELA DO JOGO DA MEMÓRIA).
+    } else {
         if (musicaIntroInstrucoes && musicaIntroInstrucoes.isPlaying()) musicaIntroInstrucoes.pause()
         if (musicaFinalizacao && musicaFinalizacao.isPlaying()) musicaFinalizacao.pause()
     }
@@ -380,7 +385,11 @@ function gerenciarMusicaDeFundo() {
 // INTERAÇÃO COM O CLIQUE DO MOUSE
 function usuarioClicou() {
     if (telaAtual === "pre_intro") {
-        if (audioLigado && musicaIntroInstrucoes) musicaIntroInstrucoes.play()
+
+        if (audioLigado && musicaIntroInstrucoes) {
+
+            musicaIntroInstrucoes.play()
+        }
         telaAtual = "intro"
         opacidadeTitulo = 0
         criarFogosClique(mouseX, mouseY)
