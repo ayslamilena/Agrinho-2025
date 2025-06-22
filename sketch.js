@@ -385,9 +385,11 @@ function gerenciarMusicaDeFundo() {
 // INTERAÇÃO COM O CLIQUE DO MOUSE
 function usuarioClicou() {
     if (telaAtual === "pre_intro") {
-
+        // AO CLICAR NA TELA INICIAL, INICIA A MÚSICA
+        if (getAudioContext().state !== 'running') {
+            getAudioContext().resume();
+        }
         if (audioLigado && musicaIntroInstrucoes) {
-
             musicaIntroInstrucoes.play()
         }
         telaAtual = "intro"
